@@ -4,6 +4,8 @@ import com.batoulapps.adhan.data.DateComponents;
 import com.batoulapps.adhan.internal.TestUtils;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,32 +15,31 @@ import static com.google.common.truth.Truth.assertThat;
 
 class PrayerTimesTest {
 
-  @Test
-  void testDaysSinceSolstice() {
-    daysSinceSolsticeTest(11, /* year */ 2016, /* month */ 1, /* day */ 1, /* latitude */ 1);
-    daysSinceSolsticeTest(10, /* year */ 2015, /* month */ 12, /* day */ 31, /* latitude */ 1);
-    daysSinceSolsticeTest(10, /* year */ 2016, /* month */ 12, /* day */ 31, /* latitude */ 1);
-    daysSinceSolsticeTest(0, /* year */ 2016, /* month */ 12, /* day */ 21, /* latitude */ 1);
-    daysSinceSolsticeTest(1, /* year */ 2016, /* month */ 12, /* day */ 22, /* latitude */ 1);
-    daysSinceSolsticeTest(71, /* year */ 2016, /* month */ 3, /* day */ 1, /* latitude */ 1);
-    daysSinceSolsticeTest(70, /* year */ 2015, /* month */ 3, /* day */ 1, /* latitude */ 1);
-    daysSinceSolsticeTest(365, /* year */ 2016, /* month */ 12, /* day */ 20, /* latitude */ 1);
-    daysSinceSolsticeTest(364, /* year */ 2015, /* month */ 12, /* day */ 20, /* latitude */ 1);
+  @ParameterizedTest
+  @CsvSource({
+      "11, 2016, 1, 1, 1",
+      "10, 2015, 12, 31, 1",
+      "10, 2016, 12, 31, 1",
+      "0, 2016, 12, 21, 1",
+      "1, 2016, 12, 22, 1",
+      "71, 2016, 3, 1, 1",
+      "70, 2015, 3, 1, 1",
+      "365, 2016, 12, 20, 1",
+      "364, 2015, 12, 20, 1",
 
-    daysSinceSolsticeTest(0, /* year */ 2015, /* month */ 6, /* day */ 21, /* latitude */ -1);
-    daysSinceSolsticeTest(0, /* year */ 2016, /* month */ 6, /* day */ 21, /* latitude */ -1);
-    daysSinceSolsticeTest(364, /* year */ 2015, /* month */ 6, /* day */ 20, /* latitude */ -1);
-    daysSinceSolsticeTest(365, /* year */ 2016, /* month */ 6, /* day */ 20, /* latitude */ -1);
-  }
-
-  private void daysSinceSolsticeTest(int value, int year, int month, int day, double latitude) {
+      "0, 2015, 6, 21, -1",
+      "0, 2016, 6, 21, -1",
+      "364, 2015, 6, 20, -1",
+      "365, 2016, 6, 20, -1"
+  })
+  void testDaysSinceSolstice(int expected, int year, int month, int day, double latitude) {
     // For Northern Hemisphere start from December 21
     // (DYY=0 for December 21, and counting forward, DYY=11 for January 1 and so on).
     // For Southern Hemisphere start from June 21
     // (DYY=0 for June 21, and counting forward)
     Date date = TestUtils.makeDate(year, month, day);
     int dayOfYear = TestUtils.getDayOfYear(date);
-    assertThat(PrayerTimes.daysSinceSolstice(dayOfYear, date.getYear(), latitude)).isEqualTo(value);
+    assertThat(PrayerTimes.daysSinceSolstice(dayOfYear, date.getYear(), latitude)).isEqualTo(expected);
   }
 
   @Test
