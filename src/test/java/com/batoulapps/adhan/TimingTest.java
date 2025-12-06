@@ -8,6 +8,7 @@ import com.batoulapps.adhan.internal.TestUtils;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
+import java.net.URL;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,8 +25,6 @@ import static com.google.common.truth.Truth.assertThat;
 
 public class TimingTest {
 
-  private static final String PATH = "../Shared/Times/";
-
   private JsonAdapter<TimingFile> jsonAdapter;
 
   @Before
@@ -36,15 +35,18 @@ public class TimingTest {
 
   @Test
   public void testTimes() throws Exception {
-    File timingDirectory = new File(PATH);
-    File[] files = timingDirectory.listFiles(new FileFilter() {
-      public boolean accept(File pathname) {
-        return pathname.getName().endsWith(".json");
-      }
+    // Get the resources folder
+    URL resourceUrl = getClass().getClassLoader().getResource("");
+    File resourceDir = new File(resourceUrl.toURI());
+
+    File[] files = resourceDir.listFiles(new FileFilter() {
+        public boolean accept(File pathname) {
+            return pathname.getName().endsWith(".json");
+        }
     });
 
     for (File timingFile : files) {
-      testTimingFile(timingFile);
+        testTimingFile(timingFile);
     }
   }
 
