@@ -9,8 +9,8 @@ import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
 import java.net.URL;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -23,18 +23,18 @@ import okio.Okio;
 
 import static com.google.common.truth.Truth.assertThat;
 
-public class TimingTest {
+class TimingTest {
 
   private JsonAdapter<TimingFile> jsonAdapter;
 
-  @Before
-  public void setup() {
+  @BeforeEach
+  void setup() {
     Moshi moshi = new Moshi.Builder().build();
     jsonAdapter = moshi.adapter(TimingFile.class);
   }
 
   @Test
-  public void testTimes() throws Exception {
+  void testTimes() throws Exception {
     // Get the resources folder
     URL resourceUrl = getClass().getClassLoader().getResource("");
     File resourceDir = new File(resourceUrl.toURI());

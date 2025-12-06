@@ -5,17 +5,17 @@ import static com.google.common.truth.Truth.assertThat;
 import com.batoulapps.adhan.data.CalendarUtil;
 import com.batoulapps.adhan.data.TimeComponents;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
-public class TimeComponentsTest {
+class TimeComponentsTest {
 
     @Test
-    public void testTimeComponents() {
+    void testTimeComponents() {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
 
@@ -59,7 +59,7 @@ public class TimeComponentsTest {
     }
 
     @Test
-    public void testMinuteRounding() {
+    void testMinuteRounding() {
         final Date comps1 = TestUtils.makeDate(2015, 1, 1, 10, 2, 29);
         final Date rounded1 = CalendarUtil.roundedMinute(comps1);
 

@@ -5,7 +5,7 @@ import com.batoulapps.adhan.data.CalendarUtil;
 import com.batoulapps.adhan.data.TimeComponents;
 import com.batoulapps.adhan.data.DateComponents;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -13,10 +13,10 @@ import java.util.Locale;
 
 import static com.google.common.truth.Truth.assertThat;
 
-public class AstronomicalTest {
+class AstronomicalTest {
 
   @Test
-  public void testSolarCoordinates() {
+  void testSolarCoordinates() {
 
     // values from Astronomical Algorithms page 165
 
@@ -91,7 +91,7 @@ public class AstronomicalTest {
   }
 
   @Test
-  public void testRightAscensionEdgeCase() {
+  void testRightAscensionEdgeCase() {
     SolarTime previousTime = null;
     final Coordinates coordinates = new Coordinates(35 + 47.0/60.0, -78 - 39.0/60.0);
     for (int i = 0; i < 365; i++) {
@@ -110,7 +110,7 @@ public class AstronomicalTest {
   }
 
   @Test
-  public void testAltitudeOfCelestialBody() {
+  void testAltitudeOfCelestialBody() {
     final double φ = 38 + (55 / 60.0) + (17.0 / 3600);
     final double δ = -6 - (43 / 60.0) - (11.61 / 3600);
     final double H = 64.352133;
@@ -120,7 +120,7 @@ public class AstronomicalTest {
   }
 
   @Test
-  public void testTransitAndHourAngle() {
+  void testTransitAndHourAngle() {
     // values from Astronomical Algorithms page 103
     final double longitude = -71.0833;
     final double Θ = 177.74208;
@@ -153,7 +153,7 @@ public class AstronomicalTest {
   }
 
   @Test
-  public void testSolarTime() {
+  void testSolarTime() {
     /*
      * Comparison values generated from
      * http://aa.usno.navy.mil/rstt/onedaytable?form=1&ID=AA&year=2015&month=7&day=12&state=NC&place=raleigh
@@ -187,7 +187,7 @@ public class AstronomicalTest {
   }
 
   @Test
-  public void testCalendricalDate() {
+  void testCalendricalDate() {
     // generated from http://aa.usno.navy.mil/data/docs/RS_OneYear.php for KUKUIHAELE, HAWAII
     final Coordinates coordinates = new Coordinates(
         /* latitude */ 20 + 7.0/60.0, /* longitude */ -155.0 - 34.0/60.0);
@@ -202,7 +202,7 @@ public class AstronomicalTest {
   }
 
   @Test
-  public void testInterpolation() {
+  void testInterpolation() {
     // values from Astronomical Algorithms page 25
     final double interpolatedValue = Astronomical.interpolate(/* value */ 0.877366,
         /* previousValue */ 0.884226, /* nextValue */ 0.870531, /* factor */ 4.35/24);
@@ -214,7 +214,7 @@ public class AstronomicalTest {
   }
 
   @Test
-  public void testAngleInterpolation() {
+  void testAngleInterpolation() {
     final double i1 = Astronomical.interpolateAngles(/* value */ 1, /* previousValue */ -1,
         /* nextValue */ 3, /* factor */ 0.6);
     assertThat(i1).isWithin(0.000001).of(2.2);
@@ -225,7 +225,7 @@ public class AstronomicalTest {
   }
 
   @Test
-  public void testJulianDay() {
+  void testJulianDay() {
     /*
      * Comparison values generated from http://aa.usno.navy.mil/data/docs/JulianDate.php
      */
@@ -275,7 +275,7 @@ public class AstronomicalTest {
   }
 
   @Test
-  public void testJulianHours() {
+  void testJulianHours() {
     final double j1 = CalendricalHelper.julianDay(/* year */ 2010, /* month */ 1, /* day */ 3);
     final double j2 = CalendricalHelper.julianDay(/* year */ 2010,
         /* month */ 1, /* day */ 1, /* hours */ 48);
@@ -283,7 +283,7 @@ public class AstronomicalTest {
   }
 
   @Test
-  public void testLeapYear() {
+  void testLeapYear() {
     assertThat(CalendarUtil.isLeapYear(2015)).isFalse();
     assertThat(CalendarUtil.isLeapYear(2016)).isTrue();
     assertThat(CalendarUtil.isLeapYear(1600)).isTrue();

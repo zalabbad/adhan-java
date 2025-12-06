@@ -3,7 +3,7 @@ package com.batoulapps.adhan;
 import com.batoulapps.adhan.data.DateComponents;
 import com.batoulapps.adhan.internal.TestUtils;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,10 +11,10 @@ import java.util.TimeZone;
 
 import static com.google.common.truth.Truth.assertThat;
 
-public class PrayerTimesTest {
+class PrayerTimesTest {
 
   @Test
-  public void testDaysSinceSolstice() {
+  void testDaysSinceSolstice() {
     daysSinceSolsticeTest(11, /* year */ 2016, /* month */ 1, /* day */ 1, /* latitude */ 1);
     daysSinceSolsticeTest(10, /* year */ 2015, /* month */ 12, /* day */ 31, /* latitude */ 1);
     daysSinceSolsticeTest(10, /* year */ 2016, /* month */ 12, /* day */ 31, /* latitude */ 1);
@@ -42,7 +42,7 @@ public class PrayerTimesTest {
   }
 
   @Test
-  public void testPrayerTimes() {
+  void testPrayerTimes() {
     DateComponents date = new DateComponents(2015, 7, 12);
     CalculationParameters params = CalculationMethod.NORTH_AMERICA.getParameters();
     params.madhab = Madhab.HANAFI;
@@ -62,7 +62,7 @@ public class PrayerTimesTest {
   }
 
   @Test
-  public void testOffsets() {
+  void testOffsets() {
     DateComponents date = new DateComponents(2015, 12, 1);
     Coordinates coordinates = new Coordinates(35.7750, -78.6336);
 
@@ -104,7 +104,7 @@ public class PrayerTimesTest {
   }
 
   @Test
-  public void testMoonsightingMethod() {
+  void testMoonsightingMethod() {
     DateComponents date = new DateComponents(2016, 1, 31);
     Coordinates coordinates = new Coordinates(35.7750, -78.6336);
     PrayerTimes prayerTimes = new PrayerTimes(
@@ -122,7 +122,7 @@ public class PrayerTimesTest {
   }
 
   @Test
-  public void testMoonsightingMethodHighLat() {
+  void testMoonsightingMethodHighLat() {
     // Values from http://www.moonsighting.com/pray.php
     DateComponents date = new DateComponents(2016, 1, 1);
     CalculationParameters parameters = CalculationMethod.MOON_SIGHTING_COMMITTEE.getParameters();
@@ -143,7 +143,7 @@ public class PrayerTimesTest {
   }
 
   @Test
-  public void testTimeForPrayer() {
+  void testTimeForPrayer() {
     DateComponents components = new DateComponents(2016, 7, 1);
     CalculationParameters parameters = CalculationMethod.MUSLIM_WORLD_LEAGUE.getParameters();
     parameters.madhab = Madhab.HANAFI;
@@ -161,7 +161,7 @@ public class PrayerTimesTest {
   }
 
   @Test
-  public void testCurrentPrayer() {
+  void testCurrentPrayer() {
     DateComponents components = new DateComponents(2015, 9, 1);
     CalculationParameters parameters = CalculationMethod.KARACHI.getParameters();
     parameters.madhab = Madhab.HANAFI;
@@ -181,7 +181,7 @@ public class PrayerTimesTest {
   }
 
   @Test
-  public void testNextPrayer() {
+  void testNextPrayer() {
     DateComponents components = new DateComponents(2015, 9, 1);
     CalculationParameters parameters = CalculationMethod.KARACHI.getParameters();
     parameters.madhab = Madhab.HANAFI;

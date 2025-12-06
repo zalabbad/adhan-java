@@ -1,13 +1,13 @@
 package com.batoulapps.adhan;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.google.common.truth.Truth.assertThat;
 
-public class CalculationParametersTest {
+class CalculationParametersTest {
 
   @Test
-  public void testNightPortion() throws Exception {
+  void testNightPortion() throws Exception {
     CalculationParameters parameters = new CalculationParameters(18, 18);
     parameters.highLatitudeRule = HighLatitudeRule.MIDDLE_OF_THE_NIGHT;
     assertThat(parameters.nightPortions().fajr).isWithin(0.001).of(0.5);

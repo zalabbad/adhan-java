@@ -3,7 +3,7 @@ package com.batoulapps.adhan.internal;
 import com.batoulapps.adhan.data.CalendarUtil;
 import com.batoulapps.adhan.data.TimeComponents;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -11,16 +11,16 @@ import java.util.TimeZone;
 
 import static com.google.common.truth.Truth.assertThat;
 
-public class MathTest {
+class MathTest {
 
   @Test
-  public void testAngleConversion() {
+  void testAngleConversion() {
     assertThat(Math.toDegrees(Math.PI)).isWithin(0.00001).of(180.0);
     assertThat(Math.toDegrees(Math.PI / 2)).isWithin(0.00001).of(90.0);
   }
 
   @Test
-  public void testNormalizing() {
+  void testNormalizing() {
     assertThat(DoubleUtil.normalizeWithBound(2.0, -5)).isWithin(0.00001).of(-3);
     assertThat(DoubleUtil.normalizeWithBound(-4.0, -5.0)).isWithin(0.00001).of(-4);
     assertThat(DoubleUtil.normalizeWithBound(-6.0, -5.0)).isWithin(0.00001).of(-1);
@@ -44,7 +44,7 @@ public class MathTest {
   }
 
   @Test
-  public void testClosestAngle() {
+  void testClosestAngle() {
     assertThat(DoubleUtil.closestAngle(360.0)).isWithin(0.000001).of(0);
     assertThat(DoubleUtil.closestAngle(361.0)).isWithin(0.000001).of(1);
     assertThat(DoubleUtil.closestAngle(1.0)).isWithin(0.000001).of(1);
@@ -58,7 +58,7 @@ public class MathTest {
   }
 
   @Test
-  public void testTimeComponents() {
+  void testTimeComponents() {
     final TimeComponents comps1 = TimeComponents.fromDouble(15.199);
     assertThat(comps1).isNotNull();
     assertThat(comps1.hours).isEqualTo(15);
@@ -88,7 +88,7 @@ public class MathTest {
   }
 
   @Test
-  public void testMinuteRounding() {
+  void testMinuteRounding() {
     final Date comps1 = TestUtils.makeDate(2015, 1, 1, 10, 2, 29);
     final Date rounded1 = CalendarUtil.roundedMinute(comps1);
 

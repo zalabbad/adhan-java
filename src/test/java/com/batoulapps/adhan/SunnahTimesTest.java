@@ -1,17 +1,17 @@
 package com.batoulapps.adhan;
 
 import com.batoulapps.adhan.data.DateComponents;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
 import java.util.TimeZone;
 
 import static com.google.common.truth.Truth.assertThat;
 
-public class SunnahTimesTest {
+class SunnahTimesTest {
 
     @Test
-    public void testSunnahTimesNY() {
+    void testSunnahTimesNY() {
         final CalculationParameters params = CalculationMethod.NORTH_AMERICA.getParameters();
         final Coordinates coordinates = new Coordinates(35.7750, -78.6336);
 
@@ -40,7 +40,7 @@ public class SunnahTimesTest {
     }
 
     @Test
-    public void testSunnahTimesLondon() {
+    void testSunnahTimesLondon() {
         final CalculationParameters params = CalculationMethod.MOON_SIGHTING_COMMITTEE.getParameters();
         final Coordinates coordinates = new Coordinates(51.5074, -0.1278);
 
@@ -69,7 +69,7 @@ public class SunnahTimesTest {
     }
 
     @Test
-    public void testSunnahTimesOslo() {
+    void testSunnahTimesOslo() {
         final CalculationParameters params = CalculationMethod.MUSLIM_WORLD_LEAGUE.getParameters();
         params.highLatitudeRule = HighLatitudeRule.MIDDLE_OF_THE_NIGHT;
 
@@ -100,7 +100,7 @@ public class SunnahTimesTest {
     }
 
     @Test
-    public void testSunnahTimesDST1() {
+    void testSunnahTimesDST1() {
         final CalculationParameters params = CalculationMethod.NORTH_AMERICA.getParameters();
         final Coordinates coordinates = new Coordinates(37.7749, -122.4194);
 
@@ -131,7 +131,7 @@ public class SunnahTimesTest {
     }
 
     @Test
-    public void testSunnahTimesDST2() {
+    void testSunnahTimesDST2() {
         final CalculationParameters params = CalculationMethod.MUSLIM_WORLD_LEAGUE.getParameters();
         params.highLatitudeRule = HighLatitudeRule.SEVENTH_OF_THE_NIGHT;
         final Coordinates coordinates = new Coordinates(48.8566, 2.3522);

@@ -1,13 +1,13 @@
 package com.batoulapps.adhan;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.google.common.truth.Truth.assertThat;
 
-public class QiblaTest {
+class QiblaTest {
 
   @Test
-  public void testNorthAmerica() {
+  void testNorthAmerica() {
     final Coordinates washingtonDC = new Coordinates(38.9072, -77.0369);
     assertThat(new Qibla(washingtonDC).direction).isWithin(0.001).of(56.560);
 
@@ -23,7 +23,7 @@ public class QiblaTest {
   }
 
   @Test
-  public void testSouthPacific() {
+  void testSouthPacific() {
     final Coordinates sydney = new Coordinates(-33.8688, 151.2093);
     assertThat(new Qibla(sydney).direction).isWithin(0.001).of(277.499);
 
@@ -34,7 +34,7 @@ public class QiblaTest {
   }
 
   @Test
-  public void testEurope() {
+  void testEurope() {
     final Coordinates london = new Coordinates(51.5074, -0.1278);
     assertThat(new Qibla(london).direction).isWithin(0.001).of(118.987);
 
@@ -49,7 +49,7 @@ public class QiblaTest {
   }
 
   @Test
-  public void testAsia() {
+  void testAsia() {
     final Coordinates islamabad = new Coordinates(33.7294, 73.0931);
     assertThat(new Qibla(islamabad).direction).isWithin(0.001).of(255.882);
 
@@ -60,11 +60,11 @@ public class QiblaTest {
   }
 
   @Test
-  public void testAfrica() {
+  void testAfrica() {
     final Coordinates capeTown = new Coordinates(33.9249, 18.4241);
     assertThat(new Qibla(capeTown).direction).isWithin(0.001).of(118.004);
 
-    
+
     final Coordinates cairo = new Coordinates(30.0444, 31.2357);
     assertThat(new Qibla(cairo).direction).isWithin(0.001).of(136.137);
 

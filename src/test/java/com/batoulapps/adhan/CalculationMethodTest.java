@@ -1,13 +1,13 @@
 package com.batoulapps.adhan;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static com.google.common.truth.Truth.assertThat;
 
-public class CalculationMethodTest {
+class CalculationMethodTest {
 
   @Test
-  public void testCalculationMethods() {
+  void testCalculationMethods() {
     CalculationParameters params = CalculationMethod.MUSLIM_WORLD_LEAGUE.getParameters();
     assertThat(params.fajrAngle).isWithin(0.000001).of(18);
     assertThat(params.ishaAngle).isWithin(0.000001).of(17);
@@ -60,7 +60,7 @@ public class CalculationMethodTest {
     assertThat(params.fajrAngle).isWithin(0.000001).of(18);
     assertThat(params.ishaAngle).isWithin(0.000001).of(0);
     assertThat(params.ishaInterval).isEqualTo(90);
-    assertThat(params.method).isEqualTo(CalculationMethod.QATAR);    
+    assertThat(params.method).isEqualTo(CalculationMethod.QATAR);
 
     params = CalculationMethod.OTHER.getParameters();
     assertThat(params.fajrAngle).isWithin(0.000001).of(0);
