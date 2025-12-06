@@ -7,7 +7,7 @@ import static com.google.common.truth.Truth.assertThat;
 class CalculationParametersTest {
 
   @Test
-  void testNightPortion() throws Exception {
+  void testNightPortion() {
     CalculationParameters parameters = new CalculationParameters(18, 18);
     parameters.highLatitudeRule = HighLatitudeRule.MIDDLE_OF_THE_NIGHT;
     assertThat(parameters.nightPortions().fajr).isWithin(0.001).of(0.5);
