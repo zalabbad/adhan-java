@@ -115,26 +115,6 @@ formatter.setTimeZone(TimeZone.getTimeZone("America/New_York"));
 formatter.format(prayerTimes.fajr);
 ```
 
-### Qibla
-
-As of version 1.1.0, this library provides a `Qibla` class for getting the qibla for a given location.
-
-```java
-Coordinates coordinates = new Coordinates(latitude, longitude);
-Qibla qibla = new Qibla(coordinates);
-// qibla.direction is the qibla direction
-```
-
-### SunnahTimes
-
-In version 1.2.0, the library provides a `SunnahTimes` class.
-
-```java
-SunnahTimes sunnahTimes = new SunnahTimes(prayerTimes);
-// sunnahTimes.middleOfTheNight is the midpoint between Maghrib and Fajr
-// sunnahTimes.lastThirdOfTheNight is the last third between Maghrib and Fajr
-```
-
 ## Full Example
 
 See an example in the `samples` module.
