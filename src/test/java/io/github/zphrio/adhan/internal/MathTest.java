@@ -1,7 +1,7 @@
-package com.batoulapps.adhan.internal;
+package io.github.zphrio.adhan.internal;
 
-import com.batoulapps.adhan.data.CalendarUtil;
-import com.batoulapps.adhan.data.TimeComponents;
+import io.github.zphrio.adhan.data.CalendarUtil;
+import io.github.zphrio.adhan.data.TimeComponents;
 
 import org.junit.jupiter.api.Test;
 

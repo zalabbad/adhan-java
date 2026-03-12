@@ -1,4 +1,4 @@
-package com.batoulapps.adhan.data;
+package io.github.zphrio.adhan.data;
 
 public class TimingInfo {
   public String date;

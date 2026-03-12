@@ -1,7 +1,7 @@
-package com.batoulapps.adhan;
+package io.github.zphrio.adhan;
 
-import com.batoulapps.adhan.data.DateComponents;
-import com.batoulapps.adhan.internal.TestUtils;
+import io.github.zphrio.adhan.data.DateComponents;
+import io.github.zphrio.adhan.internal.TestUtils;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

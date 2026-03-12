@@ -1,10 +1,10 @@
-package com.batoulapps.adhan;
+package io.github.zphrio.adhan;
 
-import com.batoulapps.adhan.data.TimingFile;
-import com.batoulapps.adhan.data.TimingInfo;
-import com.batoulapps.adhan.data.TimingParameters;
-import com.batoulapps.adhan.data.DateComponents;
-import com.batoulapps.adhan.internal.TestUtils;
+import io.github.zphrio.adhan.data.TimingFile;
+import io.github.zphrio.adhan.data.TimingInfo;
+import io.github.zphrio.adhan.data.TimingParameters;
+import io.github.zphrio.adhan.data.DateComponents;
+import io.github.zphrio.adhan.internal.TestUtils;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
@@ -14,7 +14,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
