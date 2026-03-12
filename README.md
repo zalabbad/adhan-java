@@ -1,60 +1,52 @@
 # Adhan Java
 
-[![badge-travis][]][travis] [![badge-cov][]][codecov]
-
-Adhan Java is a well tested and well documented library for calculating Islamic prayer times. Adhan Java is written to be compatible with Java and Android devices of all api versions. It compiles against Java 7 to ensure compatibility with Android. It has a small method overhead, and has no external dependencies.
+A high precision Islamic prayer time library for Java.
 
 All astronomical calculations are high precision equations directly from the book [“Astronomical Algorithms” by Jean Meeus](http://www.willbell.com/math/mc1.htm). This book is recommended by the Astronomical Applications Department of the U.S. Naval Observatory and the Earth System Research Laboratory of the National Oceanic and Atmospheric Administration.
 
-Implementations of Adhan in other languages can be found in the parent repo [Adhan](https://github.com/batoulapps/Adhan).
+## About This Fork
+
+This is a fork of the [Adhan](https://github.com/batoulapps/adhan-kotlin) library by Batoul Apps, which has since been converted to Kotlin. This fork:
+- Maintains a pure Java implementation (no Kotlin dependency)
+- Kept it simple and minimal to focus only on prayer times
+- Repackaged for independent publishing on Maven Central
 
 ## Usage
-
 ### Gradle
-
 ```
-implementation 'com.batoulapps.adhan:adhan:1.2.1'
+implementation 'io.github.zphrio:adhan-java:1.0'
 ```
 
 ### Maven
-
-```
+```xml
 <dependency>
-   <groupId>com.batoulapps.adhan</groupId>
-   <artifactId>adhan</artifactId>
-   <version>1.2.1</version>
+   <groupId>io.github.zphrio</groupId>
+   <artifactId>adhan-java</artifactId>
+   <version>1.0</version>
 </dependency>
 ```
 
 To get prayer times, initialize a new `PrayerTimes` object passing in coordinates, date, and calculation parameters.
-
 ```java
 PrayerTimes prayerTimes = new PrayerTimes(coordinates, date, params);
 ```
 
 ### Initialization parameters
-
 #### Coordinates
-
 Create a `Coordinates` object with the latitude and longitude for the location you want prayer times for.
-
 ```java
 Coordinates coordinates = new Coordinates(35.78056, -78.6389);
 ```
 
 #### Date
-
 The date parameter passed in should be an instance of the `DateComponents` object. The year, month, and day values need to be populated. All other values will be ignored. The year, month and day values should be for the  local date that you want prayer times for. These date values are expected to be for the Gregorian calendar. There's also a convenience method for converting a `java.util.Date` to `DateComponents`.
-
 ```java
 DateComponents date = new DateComponents(2015, 11, 1);
 DateComponents date = DateComponents.from(new Date());
 ```
 
 #### Calculation parameters
-
 The rest of the needed information is contained within the `CalculationParameters` class. Instead of manually initializing this class, it is recommended to use one of the pre-populated instances in the `CalculationMethod` class. You can then further customize the calculation parameters if needed.
-
 ```java
 CalculationParameters params =
      CalculationMethod.MUSLIM_WORLD_LEAGUE.getParameters();
@@ -70,7 +62,7 @@ params.adjustments.fajr = 2;
 | `ishaInterval` | Minutes after Maghrib (if set, the time for Isha will be Maghrib plus ishaInterval) |
 | `madhab` | Value from the Madhab object, used to calculate Asr |
 | `highLatitudeRule` | Value from the HighLatitudeRule object, used to set a minimum time for Fajr and a max time for Isha |
-| `adjustments` | JavaScript object with custom prayer time adjustments in minutes for each prayer time |
+| `adjustments` | PrayerAdjustments object with custom prayer time adjustments in minutes for each prayer time |
 
 **CalculationMethod**
 
@@ -86,7 +78,6 @@ params.adjustments.fajr = 2;
 | `MOONSIGHTING_COMMITTEE` | Moonsighting Committee. Fajr angle: 18, Isha angle: 18. Also uses seasonal adjustment values. |
 | `SINGAPORE` | Method used by Singapore. Fajr angle: 20, Isha angle: 18. |
 | `NORTH_AMERICA` | Referred to as the ISNA method. This method is included for completeness but is not recommended. Fajr angle: 15, Isha angle: 15 |
-| `KUWAIT` | Kuwait. Fajr angle: 18, Isha angle: 17.5 |
 | `OTHER` | Fajr angle: 0, Isha angle: 0. This is the default value for `method` when initializing a `CalculationParameters` object. |
 
 **Madhab**
@@ -106,7 +97,6 @@ params.adjustments.fajr = 2;
 
 
 ### Prayer Times
-
 Once the `PrayerTimes` object has been initialized it will contain values for all five prayer times and the time for sunrise. The prayer times will be  Date object instances initialized with UTC values. To display these times for the local timezone, a formatting and timezone conversion formatter should be used, for example `java.text.SimpleDateFormat`.
 
 ```java
@@ -116,28 +106,19 @@ formatter.format(prayerTimes.fajr);
 ```
 
 ## Full Example
-
-See an example in the `samples` module.
-I deleted the sample project, the only example in that module:
 ```java
 final Coordinates coordinates = new Coordinates(35.78056, -78.6389);
 final DateComponents dateComponents = DateComponents.from(new Date());
-final CalculationParameters parameters =
-    CalculationMethod.MUSLIM_WORLD_LEAGUE.getParameters();
+final CalculationParameters parameters = CalculationMethod.MUSLIM_WORLD_LEAGUE.getParameters();
 
 SimpleDateFormat formatter = new SimpleDateFormat("hh:mm a");
-    formatter.setTimeZone(TimeZone.getTimeZone("America/New_York"));
+formatter.setTimeZone(TimeZone.getTimeZone("America/New_York"));
 
 PrayerTimes prayerTimes = new PrayerTimes(coordinates, dateComponents, parameters);
-    System.out.println("Fajr: " + formatter.format(prayerTimes.fajr));
-    System.out.println("Sunrise: " + formatter.format(prayerTimes.sunrise));
-    System.out.println("Dhuhr: " + formatter.format(prayerTimes.dhuhr));
-    System.out.println("Asr: " + formatter.format(prayerTimes.asr));
-    System.out.println("Maghrib: " + formatter.format(prayerTimes.maghrib));
-    System.out.println("Isha: " + formatter.format(prayerTimes.isha));
+System.out.println("Fajr: " + formatter.format(prayerTimes.fajr));
+System.out.println("Sunrise: " + formatter.format(prayerTimes.sunrise));
+System.out.println("Dhuhr: " + formatter.format(prayerTimes.dhuhr));
+System.out.println("Asr: " + formatter.format(prayerTimes.asr));
+System.out.println("Maghrib: " + formatter.format(prayerTimes.maghrib));
+System.out.println("Isha: " + formatter.format(prayerTimes.isha));
 ```
-
-[badge-travis]: https://travis-ci.org/batoulapps/adhan-java.svg?branch=master
-[badge-cov]: https://codecov.io/gh/batoulapps/adhan-java/branch/master/graph/badge.svg
-[travis]: https://travis-ci.org/batoulapps/adhan-java
-[codecov]: https://codecov.io/gh/batoulapps/adhan-java
