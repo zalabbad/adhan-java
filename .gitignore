@@ -25,3 +25,4 @@ samples/target
 local.properties
 .gradle
 build/
+bin/
