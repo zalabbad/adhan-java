@@ -1,7 +1,7 @@
-package com.batoulapps.adhan.internal;
+package io.github.zphrio.adhan.internal;
 
-import com.batoulapps.adhan.Coordinates;
-import com.batoulapps.adhan.data.DateComponents;
+import io.github.zphrio.adhan.Coordinates;
+import io.github.zphrio.adhan.data.DateComponents;
 
 public class SolarTime {
 

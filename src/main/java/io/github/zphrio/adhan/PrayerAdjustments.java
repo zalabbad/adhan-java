@@ -1,4 +1,4 @@
-package com.batoulapps.adhan;
+package io.github.zphrio.adhan;
 
 /**
  * Adjustment value for prayer times, in minutes

@@ -8,7 +8,7 @@
 		"highLatitudeRule": "MiddleOfTheNight"
 	},
 	"source": [
-		"http://www.ummulqura.org.sa/Index.aspx",
+		"https://www.ummulqura.org.sa/default.aspx",
 		"adjusted +/- 1 minute",
 		"1/5/15 -  25/3/1437    Mecca    05:39-1  06:59+1  12:26    03:32-1  05:53-1  07:23-1",
 		"2/4/16 -  25/4/1437    Mecca    05:39    06:57    12:35    03:49-1  06:13-1  07:43-1",
@@ -32,7 +32,7 @@
 			"asr": "3:31 PM",
 			"maghrib": "5:52 PM",
 			"isha": "7:22 PM"
-		},		
+		},
 		{
 			"date": "2016-02-04",
 			"fajr": "5:39 AM",
@@ -41,7 +41,7 @@
 			"asr": "3:48 PM",
 			"maghrib": "6:12 PM",
 			"isha": "7:42 PM"
-		},	
+		},
 		{
 			"date": "2016-03-05",
 			"fajr": "5:22 AM",
@@ -50,7 +50,7 @@
 			"asr": "3:55 PM",
 			"maghrib": "6:27 PM",
 			"isha": "7:57 PM"
-		},	
+		},
 		{
 			"date": "2016-04-03",
 			"fajr": "4:55 AM",

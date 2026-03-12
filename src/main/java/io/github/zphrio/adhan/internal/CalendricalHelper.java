@@ -1,4 +1,4 @@
-package com.batoulapps.adhan.internal;
+package io.github.zphrio.adhan.internal;
 
 import java.util.Calendar;
 import java.util.Date;

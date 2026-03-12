@@ -1,9 +1,9 @@
-package com.batoulapps.adhan;
+package io.github.zphrio.adhan;
 
-import com.batoulapps.adhan.data.CalendarUtil;
-import com.batoulapps.adhan.data.DateComponents;
-import com.batoulapps.adhan.data.TimeComponents;
-import com.batoulapps.adhan.internal.SolarTime;
+import io.github.zphrio.adhan.data.CalendarUtil;
+import io.github.zphrio.adhan.data.DateComponents;
+import io.github.zphrio.adhan.data.TimeComponents;
+import io.github.zphrio.adhan.internal.SolarTime;
 
 import java.util.Calendar;
 import java.util.Date;

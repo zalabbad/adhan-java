@@ -1,4 +1,4 @@
-package com.batoulapps.adhan;
+package io.github.zphrio.adhan;
 
 /**
  * Coordinates representing a particular place

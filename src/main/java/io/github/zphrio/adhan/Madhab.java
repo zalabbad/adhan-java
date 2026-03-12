@@ -1,6 +1,6 @@
-package com.batoulapps.adhan;
+package io.github.zphrio.adhan;
 
-import com.batoulapps.adhan.internal.ShadowLength;
+import io.github.zphrio.adhan.internal.ShadowLength;
 
 /**
  * Madhab for determining how Asr is calculated

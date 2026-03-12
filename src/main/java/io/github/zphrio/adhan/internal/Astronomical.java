@@ -1,6 +1,6 @@
-package com.batoulapps.adhan.internal;
+package io.github.zphrio.adhan.internal;
 
-import com.batoulapps.adhan.Coordinates;
+import io.github.zphrio.adhan.Coordinates;
 
 /**
  * Astronomical equations

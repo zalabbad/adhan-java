@@ -8,18 +8,21 @@ import com.batoulapps.adhan.internal.TestUtils;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
-import java.net.URL;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
-
-import okio.Okio;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -34,25 +37,23 @@ class TimingTest {
   }
 
   @Test
-  void testTimes() throws Exception {
-    // Get the resources folder
-    URL resourceUrl = getClass().getClassLoader().getResource("");
-    File resourceDir = new File(resourceUrl.toURI());
-
-    File[] files = resourceDir.listFiles(new FileFilter() {
-        public boolean accept(File pathname) {
-            return pathname.getName().endsWith(".json");
-        }
-    });
-
+  void testTimes() throws IOException {
+    Path timingsDir = Paths.get("src/test/resources/timings");
+    List<File> files = Files.walk(timingsDir)
+        .filter(p -> p.toString().endsWith(".json"))
+        .map(Path::toFile)
+        .collect(Collectors.toList());
+    assertThat(files).isNotNull();
+    assertThat(files.size()).isEqualTo(7);
     for (File timingFile : files) {
         testTimingFile(timingFile);
     }
   }
 
-  private void testTimingFile(File jsonFile) throws Exception {
+  private void testTimingFile(File jsonFile) throws IOException {
     System.out.println("testing timings for " + jsonFile.getName());
-    TimingFile timingFile = jsonAdapter.fromJson(Okio.buffer(Okio.source(jsonFile)));
+
+    TimingFile timingFile = jsonAdapter.fromJson(new String(Files.readAllBytes(jsonFile.toPath())));
     assertThat(timingFile).isNotNull();
 
     Coordinates coordinates = new Coordinates(

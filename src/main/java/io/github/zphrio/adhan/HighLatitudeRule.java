@@ -1,4 +1,4 @@
-package com.batoulapps.adhan;
+package io.github.zphrio.adhan;
 
 /**
  * Rules for dealing with Fajr and Isha at places with high latitudes

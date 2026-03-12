@@ -1,4 +1,4 @@
-package com.batoulapps.adhan.internal;
+package io.github.zphrio.adhan.internal;
 
 public enum ShadowLength {
   SINGLE(1.0),

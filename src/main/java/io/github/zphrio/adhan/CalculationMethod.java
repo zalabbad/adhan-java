@@ -1,4 +1,4 @@
-package com.batoulapps.adhan;
+package io.github.zphrio.adhan;
 
 /**
  * Standard calculation methods for calculating prayer times
